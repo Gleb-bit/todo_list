@@ -13,7 +13,7 @@ class TodoListRetrieveSerializer(serializers.ModelSerializer):
 class TodoListCreateSerializer(TodoListRetrieveSerializer):
 
     def create(self, validated_data):
-        generator_uuid = GenerateUUID(True, 1)
+        generator_uuid = GenerateUUID(True, 8)
         model_uuid = generator_uuid.create_uuid()
         validated_data['uuid'] = model_uuid
 

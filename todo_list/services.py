@@ -20,7 +20,7 @@ class GenerateUUID:
 
     def create_uuid(self):
         while True:
-            new_uuid = ''.join(random.choice(self.letters) for i in range(8))
+            new_uuid = ''.join(random.choice(self.letters) for i in range(self.length))
 
             exist = TodoList.objects.filter(uuid=new_uuid)
             if not exist:
