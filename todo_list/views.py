@@ -44,15 +44,14 @@ class TodoListGetDatedAPIView(generics.ListAPIView):
 
     def get_queryset(self):
         start_date_str = self.request.query_params.get('start')
-        start_date = datetime.datetime.strptime(start_date_str, '%dd.%mm.%YY')
+        start_date = datetime.datetime.strptime(start_date_str, '%Y-%m-%d')
 
         end_date_str = self.request.query_params.get('end')
-        end_date = datetime.datetime.strptime(end_date_str, '%dd.%mm.%YY')
+        end_date = datetime.datetime.strptime(end_date_str, '%Y-%m-%d')
 
-        data = get_data_response(self.serializer_class, TodoList.objects.filter(
-            created__gte=start_date, created__lte=end_date))
+        queryset = TodoList.objects.filter(created__gte=start_date, created__lte=end_date)
 
-        return data
+        return queryset
 
 
 class TodoListDeleteAPIView(generics.DestroyAPIView):
