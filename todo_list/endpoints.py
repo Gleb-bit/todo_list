@@ -6,7 +6,7 @@ from todo_list.views import TodoListCreateAPIView, TodoListRetrieveAPIView, Todo
 urlpatterns = [
     path('record/', include([
         path('create', TodoListCreateAPIView.as_view(), name='create'),
-        path('get', TodoListRetrieveAPIView.as_view(), name='list'),
+        path('get', TodoListRetrieveAPIView.as_view(), name='get'),
         path('delete', TodoListDeleteAPIView.as_view(), name='delete'),
 
     ])),

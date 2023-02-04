@@ -34,10 +34,10 @@ class TodoListGetDatedAPIView(generics.ListAPIView):
     serializer_class = TodoListRetrieveSerializer
 
     @extend_schema(parameters=[
-        OpenApiParameter(name='start', description='start_date', required=True,
-                         type=datetime.date),
-        OpenApiParameter(name='end', description='end_date', required=True,
-                         type=datetime.date),
+        OpenApiParameter(name='start', description='start_date in format yyyy-mm-dd',
+                         required=True, type=datetime.date),
+        OpenApiParameter(name='end', description='end_date in format yyyy-mm-dd',
+                         required=True, type=datetime.date),
     ])
     def get(self, request, *args, **kwargs):
         return super().get(request, *args, **kwargs)
